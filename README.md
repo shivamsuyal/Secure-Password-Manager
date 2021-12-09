@@ -1,4 +1,4 @@
-# Secure-Password-Manager
+# Secure-Password-Manager (Still in development)
 For compiling the main file (ie. manager.c), You need install openssl and it's libs
 
 `Linux`
