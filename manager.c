@@ -121,8 +121,8 @@ int main (void)
 
     // get password
         printf("\nEnter Your Password : ");
-        fgets(password,16,stdin);
-        password[strcspn(password, "\n")] = '\0';
+        mgetpass(password);
+        // password[strcspn(password, "\n")] = '\0';
         KeyIvGen(password,key,iv);
     // HASH THE PASSWORD AND HEX IT (WITCHCRAFT)
         ciphertext_len = encrypt (password, strlen ((char *)password), key, iv,ciphertext);
@@ -138,8 +138,8 @@ int main (void)
             }else{
                 // get password
                     printf("\nINCOREECT PASSWORD\nEnter Your Password : ");
-                    fgets(password,16,stdin);
-                    password[strcspn(password, "\n")] = '\0';
+                    mgetpass(password);
+                    // password[strcspn(password, "\n")] = '\0';
                     KeyIvGen(password,key,iv);
 
                 // HASH THE PASSWORD AND HEX IT (WITCHCRAFT)
@@ -219,9 +219,9 @@ int main (void)
                     fflush(stdin);
                     usr[strcspn(usr, "\n")] = '\0';
                 printf("Password [len -> 15] : ");
-                    fgets(psk,16,stdin);
+                    mgetpass(psk);
                     fflush(stdin);
-                    psk[strcspn(psk, "\n")] = '\0';
+                    // psk[strcspn(psk, "\n")] = '\0';
 
                 mencrypt(psk,key,strlen(psk),enc);
                 pfile = fopen(".pass","a");
@@ -255,9 +255,9 @@ int main (void)
                         
                         // Asking For New password
                         printf("NEW Password [len -> 15] : ");
-                            fgets(psk,16,stdin);
+                            mgetpass(psk);
                             fflush(stdin);
-                            psk[strcspn(psk, "\n")] = '\0';
+                            // psk[strcspn(psk, "\n")] = '\0';
 
 
                         // Encrpyting new password 
@@ -346,11 +346,6 @@ int main (void)
                     fflush(stdin);
                     usr[strcspn(usr, "\n")] = '\0';
                 
-                // getPsk(dictionary,org,usr,dict_size1,psk);
-                
-                // Check If Entry Exists
-                // memset(psk,0,16);
-                // getPsk(dictionary,org,usr,dict_size1,psk);
                 if(chkUser(dictionary,org,usr,dict_size1) == 0){
                     printf("No org/usr Found\n");
                     break;
@@ -401,8 +396,8 @@ int main (void)
                 opt1 = 1;
                 // get password
                     printf("\nEnter Your New Password : ");
-                    fgets(password,16,stdin);
-                    password[strcspn(password, "\n")] = '\0';
+                    mgetpass(password);
+                    // password[strcspn(password, "\n")] = '\0';
                     KeyIvGen(password,key,iv);
                 // HASH THE PASSWORD AND HEX IT (WITCHCRAFT)
                     ciphertext_len = encrypt (password, strlen ((char *)password), key, iv,ciphertext);

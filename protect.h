@@ -1,4 +1,4 @@
-#ifndef protect_h
+#ifndef protect
 #include <openssl/conf.h>
 #include <openssl/evp.h>
 #include <openssl/err.h>
@@ -6,6 +6,7 @@
 #include <openssl/md5.h>
 #include <string.h>
 #include <stdlib.h>
+#include <conio.h>
 
 
 void hexToText(char *src,unsigned char * dest);
@@ -187,5 +188,30 @@ void textToHex(unsigned char *src,char * dest){
     printf("\n");
 }
 
-#define protect_h
+void mgetpass(char *psk){
+    char c;
+    int index = 0;
+    while((c = getch()) != 13){
+        if(c == 8){
+            index--;
+            if(index < 0){
+                index = 0;
+            }else{
+                printf("\b \b");
+            }  
+            continue;
+        }
+        if(index < 15){
+            if(c == 3){
+                exit(0);
+            }
+            psk[index] = c;
+            putch('*');
+            index++;
+        }
+    }
+    psk[index] = '\0';
+}
+
+#define protect
 #endif
