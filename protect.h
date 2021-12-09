@@ -1,4 +1,4 @@
-#ifndef protect
+#ifndef protect_h
 #include <openssl/conf.h>
 #include <openssl/evp.h>
 #include <openssl/err.h>
@@ -187,5 +187,5 @@ void textToHex(unsigned char *src,char * dest){
     printf("\n");
 }
 
-#define protect
+#define protect_h
 #endif
